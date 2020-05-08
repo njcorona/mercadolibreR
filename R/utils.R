@@ -1,12 +1,15 @@
 #' Verify API result
 #'
 #' Check API result for error codes
-#' @param res API result ot check
+#' @param res API result to check
+#' @param function_name name of function calling verify_result
 #' @export
-verify_result <- function(res) {
-    if (!is.null(res$error)) {
-        stop(str_glue('{res$error$message} ({res$error$status})'))
+verify_result <- function(res, function_name) {
+    content <- content(res)
+    if (!is.null(content$error)) {
+        stop(str_glue('FUNCTION: {function_name}()\n  ERROR: {content$error} (HTTP {content$status})\n  MESSAGE: {content$message}'))
     }
+    stop_for_status(res)
 }
 
 #' Valid scopes
@@ -38,8 +41,6 @@ sites <- function() {
            currency_id = get[seq(1, length(unlist(get)), 3)] %>% c()
     )
 }
-
-
 
 # TODO: delete this reference code
 # Reference code for cleaning duplicate names

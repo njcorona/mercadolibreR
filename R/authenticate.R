@@ -44,7 +44,7 @@ get_mercadolibre_access_token <- function(app_id = Sys.getenv('MELI_APP_ID'), cl
 #' This function creates a Mercado Libre access token.
 #' @param app_id Defaults to System Environment variable "MELI_APP_ID"
 #' @param client_secret Defaults to System Envioronment variable "MELI_SECRET_KEY"
-#' @param scope Space delimited string of Mercado Libre scopes, found here: https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion#Obten-tu-access-token. All scopes are selected by default.
+#' @param scope Space delimited string of Mercado Libre scopes, found here: https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion#Obten-tu-access-token. All scopes are selected by default.  Should match your app's enabled scopes.
 #' @keywords auth
 #' @export
 #' @examples
@@ -52,7 +52,7 @@ get_mercadolibre_access_token <- function(app_id = Sys.getenv('MELI_APP_ID'), cl
 #' get_mercadolibre_authorization_code()
 #' }
 
-get_mercadolibre_authorization_code <- function(app_id = Sys.getenv("MELI_APP_ID"), client_secret = Sys.getenv("MELI_SECRET_KEY"), scope = c('read', 'write', 'offline_access')) {
+get_mercadolibre_authorization_code <- function(app_id = Sys.getenv("MELI_APP_ID"), client_secret = Sys.getenv("MELI_SECRET_KEY"), scope = scopes) {
     # TODO:  How is this different from getting an access token?  I am not familiar enough with using Oauth to know.
 
     stop("STOP get_mercadolibre_authorization_code: unimplemented")

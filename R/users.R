@@ -45,7 +45,7 @@ get_user_information <- function(self = FALSE, private_information = TRUE, user_
 
 #' Get user_id from nickname and site_id.
 #'
-#' @param site_id Required. site_id of the country in which the user is registered.
+#' @param site_id Required. site_id of the country in which the user is registered.  See mercadolibreR::get_sites() or mercadolibreR::get_site_ids() for valid site_ids.
 #' @param nickname Required. Nickname of the user.
 #' @return
 #' Returns numeric user_id, or NULL if user is not registered in the given country. See the API \href{https://developers.mercadolibre.com.co/es_ar/producto-consulta-usuarios}{documentation} for more information.
@@ -54,8 +54,8 @@ get_user_information <- function(self = FALSE, private_information = TRUE, user_
 
 get_user_id <- function(site_id, nickname) {
 
-    if (!site_id %in% site_ids()) {
-        stop("STOP get_user_id: invalid site_id.  See mercadolibreR::sites() or mercadolibreR::site_ids() for valid site_ids.")
+    if (!site_id %in% get_site_ids()) {
+        stop("STOP get_user_id: invalid site_id.  See mercadolibreR::get_sites() or mercadolibreR::get_site_ids() for valid site_ids.")
     }
 
     url <- str_glue("https://api.mercadolibre.com/sites/", site_id, "/search")
@@ -69,4 +69,55 @@ get_user_id <- function(site_id, nickname) {
     verify_result(res = res, function_name = "get_user_id")
 
     return(content(res)$seller$id)
+}
+
+#' Get user addresses.
+#'
+#' @param user_id user_id of user.  Use mercadolibreR::get_user_id() if you only have access to the user's nickname and site_id.
+#' @param authorization A valid access token from developers.mercadolibre.com. See the \href{https://developers.mercadolibre.com.co/es_ar/autenticacion-y-autorizacion/}{API authentication and authorization guide} for more details.
+#' @return
+#' Returns a list of the user's addresses. See the API \href{https://developers.mercadolibre.com.co/es_ar/usuarios-y-aplicaciones}{documentation} for more information.
+#' @export
+#'
+
+get_user_addresses <- function(user_id, authorization = Sys.getenv('MELI_ACCESS_TOKEN')) {
+
+    url <- str_glue("https://api.mercadolibre.com/users/", user_id, "/addresses")
+
+    params <- list(
+        access_token = authorization
+    )
+
+    res <- RETRY('GET', url, query = params, encode = 'json')
+
+    verify_result(res = res, function_name = "get_user_addresses")
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    return(res)
+}
+
+#' Set user information.
+#'
+#' @param user_id Required.  user_id of user to update.  Use mercadolibreR::get_user_id() if you only have access to the user's nickname and site_id.
+#' @param authorization Required.  A valid access token fpr the user from developers.mercadolibre.com. See the \href{https://developers.mercadolibre.com.co/es_ar/autenticacion-y-autorizacion/}{API authentication and authorization guide} for more details.
+#' @param new_values a list() of information about the user.
+#' @return
+#' Returns an updated list of information about the user. See the API \href{https://developers.mercadolibre.com.co/es_ar/producto-consulta-usuarios}{documentation} for more information.
+#' @export
+#'
+
+# I am unable to test this without test users, but I've created the maximum number of test users and I don't know how to
+# get the user id's of the ones I made.
+# TODO: fix this and write unit tests.
+set_user_information <- function(user_id, authorization, new_values) {
+    url <- str_glue("https://api.mercadolibre.com/users/", user_id, "?access_token=", authorization)
+
+    res <- RETRY('PUT', url, content_type_json(), body = values, encode = 'json')
+
+    verify_result(res = res, function_name = "get_user_information")
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    return(get_user_information(self = TRUE, user_id = user_id, authorization = authorization))
 }

@@ -1,3 +1,11 @@
+library(stringr)
+library(httr)
+library(tidyverse)
+library(jsonlite)
+authorization <- ""
+# TODO: write unit tests.
+
+
 #' Verify API result
 #'
 #' Check API result for error codes
@@ -20,26 +28,10 @@ scopes <- c('read', 'write', 'offline_access')
 
 #' Valid site_ids
 #'
-#' Vector of valid site_ids for reference.
+#' Vector of valid site_ids.
 #' @export
-site_ids <- function() {
-    sites()$id
-}
-
-#' Valid sites (countries)
-#'
-#' Data frame of valid sites (default_currency_id, id, and name) for reference.
-#' @export
-sites <- function() {
-    get <- (RETRY('GET', 'https://api.mercadolibre.com/sites') %>%
-                content() %>%
-                unlist()
-    )
-
-    tibble(name = get[seq(3, length(unlist(get)), 3)] %>% c(),
-           id = get[seq(2, length(unlist(get)), 3)] %>% c(),
-           currency_id = get[seq(1, length(unlist(get)), 3)] %>% c()
-    )
+get_site_ids <- function() {
+    get_sites()$id
 }
 
 # TODO: delete this reference code

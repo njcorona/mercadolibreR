@@ -26,14 +26,6 @@ verify_result <- function(res, function_name) {
 #' @export
 scopes <- c('read', 'write', 'offline_access')
 
-#' Valid site_ids
-#'
-#' Vector of valid site_ids.
-#' @export
-get_site_ids <- function() {
-    get_sites()$id
-}
-
 # TODO: delete this reference code
 # Reference code for cleaning duplicate names
 # dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_year_col = 'album_release_year') {

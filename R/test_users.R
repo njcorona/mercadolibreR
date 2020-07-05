@@ -8,9 +8,8 @@
 #'
 
 create_test_user <- function(site_id, authorization = Sys.getenv('MELI_ACCESS_TOKEN')) {
-
-  if (!site_id %in% site_ids()) {
-    stop("STOP create_test_user: invalid site_id.  See mercadolibreR::sites() or mercadolibreR::site_ids() for valid site_ids.")
+  if (!site_id %in% get_site_ids()$id) {
+    stop("STOP create_test_user: invalid site_id.  See mercadolibreR::get_site_ids() for valid site_ids.")
   }
 
   url <- 'https://api.mercadolibre.com/users/test_user'

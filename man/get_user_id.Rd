@@ -7,7 +7,7 @@
 get_user_id(site_id, nickname)
 }
 \arguments{
-\item{site_id}{Required. site_id of the country in which the user is registered.}
+\item{site_id}{Required. site_id of the country in which the user is registered.  See mercadolibreR::get_site_ids() for valid site_ids.}
 
 \item{nickname}{Required. Nickname of the user.}
 }

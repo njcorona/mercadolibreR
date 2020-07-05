@@ -18,7 +18,7 @@ get_user_information(
 
 \item{user_id}{Required if self is FALSE.  user_id of user to look up.  Use mercadolibreR::get_user_id() if you only have access to the user's nickname and site_id.}
 
-\item{authorization}{Required if self is TRUE or if private_information is TRUE. If self is TRUE, should be your access token.  If private_information is TRUE, should be the access token for the user from which to retrieve information.  A valid access token from developers.mercadolibre.com. See the \href{https://developers.mercadolibre.com.co/es_ar/autenticacion-y-autorizacion/}{API authentication and authorization guide} for more details.}
+\item{authorization}{Required if self is TRUE or if private_information is TRUE. If self is TRUE, should be your access token.  If private_information is TRUE, should be the access token for the user from which to retrieve information.  See the \href{https://developers.mercadolibre.com.co/es_ar/autenticacion-y-autorizacion/}{API authentication and authorization guide} for more details.}
 }
 \value{
 Returns a list of information about the user. See the API \href{https://developers.mercadolibre.com.co/es_ar/producto-consulta-usuarios}{documentation} for more information.

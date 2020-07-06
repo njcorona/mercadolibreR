@@ -11,3 +11,4 @@
     # However, I don't know what site_domains are (didn't work with "MLA") and the example for this function refers to a
     # different function, so I'm going to skip it for now.
     # Link here: https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones
+# More useful / specific methods that return parts of the information produces by calling get_category_information.

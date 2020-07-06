@@ -2,7 +2,7 @@
 % Please edit documentation in R/categories_and_publications.R
 \name{get_site_domain_information}
 \alias{get_site_domain_information}
-\title{Get site domain information.  (Same information as mercadolibreR::get_site_domains() except for one domain.)}
+\title{Get site domain information.}
 \usage{
 get_site_domain_information(site_domain_url)
 }
@@ -10,8 +10,8 @@ get_site_domain_information(site_domain_url)
 \item{site_domain_url}{Required. site_domain_url of the domain of interest.  See mercadolibreR::get_site_domains() for valid site_domain_url's.}
 }
 \value{
-Returns a data frame (tibble) of information associated with a site domain.  Fields include id, site_id, and country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
+Returns a data frame (tibble) of information associated with a single site domain.  Fields include id, site_id, and country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
 }
 \description{
-Get site domain information.  (Same information as mercadolibreR::get_site_domains() except for one domain.)
+Get site domain information.
 }

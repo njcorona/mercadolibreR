@@ -17,7 +17,7 @@ get_site_ids <- function() {
 #' Get site domains.
 #'
 #' @return
-#' Returns a data frame (tibble) of site domains where Mercado Libre is available.  Fields include id, site_id, and country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
+#' Returns a data frame (tibble) of site domains where Mercado Libre is available.  Fields include id, site_id, country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
 #' @export
 #'
 get_site_domains <- function() {

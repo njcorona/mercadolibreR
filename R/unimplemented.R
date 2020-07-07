@@ -12,3 +12,5 @@
     # different function, so I'm going to skip it for now.
     # Link here: https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones
 # More useful / specific methods that return parts of the information produces by calling get_category_information.
+# Some functions that use ids relating to higher-level ids (e.g. state_ids for countries with country_ids) require the country_id
+  # for me to do error-checking even though they're not strictly required. Consider making these arguments optional or removing them entirely.

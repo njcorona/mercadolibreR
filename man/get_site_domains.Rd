@@ -7,7 +7,7 @@
 get_site_domains()
 }
 \value{
-Returns a data frame (tibble) of site domains where Mercado Libre is available.  Fields include id, site_id, and country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
+Returns a data frame (tibble) of site domains where Mercado Libre is available.  Fields include id, site_id, country_id, locale, and tag.  See the API \href{https://developers.mercadolibre.com.co/es_ar/categorias-y-publicaciones}{documentation} for more information.
 }
 \description{
 Get site domains.

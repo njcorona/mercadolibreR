@@ -121,6 +121,3 @@ set_user_information <- function(user_id, authorization, new_values) {
 
     return(get_user_information(self = TRUE, user_id = user_id, authorization = authorization))
 }
-
-url <- str_glue("https://api.mercadolibre.com/users/test_user", "?access_token=", authorization)
-res <- RETRY('POST', url, content_type_json(), body = list(site_id = "MLA"), encode = 'json')

@@ -14,3 +14,5 @@
 # More useful / specific methods that return parts of the information produces by calling get_category_information.
 # Some functions that use ids relating to higher-level ids (e.g. state_ids for countries with country_ids) require the country_id
   # for me to do error-checking even though they're not strictly required. Consider making these arguments optional or removing them entirely.
+# get_zipcode_information doesn't work with some valid country id's even though they should >:(
+# double-check that all things that take in items do null checks and check for invalid types
